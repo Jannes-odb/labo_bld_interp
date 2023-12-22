@@ -1,2 +1,2 @@
 from .data import get_data_loaders  # noqa
-from .pokemon_dataset import PokemonDataset  # noqa
+from .dim_sum_dataset import DimSumDataset  # noqa

@@ -1,0 +1,17 @@
+# Define the values for batch_var and lr_var
+$batch_var_values = 5, 10, 15, 20, 25, 30
+$lr_var_values = 0.1, 0.01, 0.001
+
+# Specify the Python command template
+$python_command_template = "python train.py --wandb_entity=jodb --wandb_project=labo_bld_dimsum --batch_size={0} --lr={1} --model_weights=DEFAULT"
+
+# Loop through each combination and execute the Python command
+foreach ($batch_var in $batch_var_values) {
+    foreach ($lr_var in $lr_var_values) {
+        # Construct the Python command with the current values
+        $python_command = $python_command_template -f $batch_var, $lr_var
+
+        # Execute the Python command
+        Invoke-Expression $python_command
+    }
+}

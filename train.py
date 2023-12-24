@@ -252,7 +252,7 @@ if __name__ == '__main__':
     # Train args
     parser.add_argument(
         '--num_epochs',
-        default=20,
+        default=10,
         help='The number of epochs to train.',
         type=int
     )
@@ -260,7 +260,7 @@ if __name__ == '__main__':
     # Log args
     parser.add_argument(
         '--wandb_entity',
-        default='YOUR_WANDB_USER_NAME',
+        default='jodb',
         help='Weights and Biases entity.',
     )
     parser.add_argument(

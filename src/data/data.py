@@ -33,6 +33,16 @@ def get_data_loaders(
         v2.Normalize(mean=norm_mean, std=norm_std),
     ])
 
+    my_tfms = v2.Compose([
+        v2.ToImage(),
+        v2.RandomRotation(degrees=15),
+        v2.RandomHorizontalFlip(),
+        v2.RandomResizedCrop(size, antialias=True),
+        v2.ColorJitter(brightness = 0.3, contrast = 0.3, saturation = 0.3),
+        v2.ToDtype(torch.float32, scale=True),
+        v2.Normalize(mean=norm_mean, std=norm_std),
+    ])
+
     # Create datasets
     ds_train = DimSumDataset(data_path, 'train',
                               transform=train_tfms)

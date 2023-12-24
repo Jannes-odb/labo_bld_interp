@@ -7,12 +7,6 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset
 
-
-IGNORE_IMAGES = [
-    'c1f3f2cb1463bbfa905ccaff484cd668.png',  # truncated image
-]
-
-
 # Ignore 'DataFrame.swapaxes' is deprecated warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -22,6 +16,7 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 class DimSumDataset(Dataset):
     def __init__(self, data_path, subset, k=5, val_fold=0, transform=None):
         data_path = Path(data_path)
+        print(transform)
         df = pd.DataFrame([
             {
                 'image': str(img_path),
@@ -67,4 +62,4 @@ class DimSumDataset(Dataset):
         
     def __len__(self):
         return len(self.df)
-    
+
